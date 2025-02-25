@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_new_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbriand <tbriand@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 11:59:34 by tbriand           #+#    #+#             */
-/*   Updated: 2025/02/25 16:43:38 by tbriand          ###   ########.fr       */
+/*   Created: 2025/02/10 12:49:33 by tbriand           #+#    #+#             */
+/*   Updated: 2025/02/25 16:54:32 by tbriand          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	main(int argc, char **argv)
+void	ft_new_stack(t_stack **a, char **argv)
 {
-	t_stack	*a;
-	//t_stack *b;
+	long	nbr;
+	int		i;
 
-	a = NULL;
-	//b = NULL;
-	if (1 == argc || (2 == argc && !argv[1][0]))
-		return (1);
-	else if (2 == argc)
-		argv = ft_split(argv[1],' ');
-	ft_new_stack(&a,argv + 1);
-	
-
+	i = 0;
+	while (argv[i])
+	{
+		if (check_str(argv[i]))
+			free_error(a);
+		nbr = ft_atol(argv[i]);
+		if (nbr > 2147483647 || nbr < -2147483648)
+			free_error(a);
+		if (check_rep(*a, (int)nbr))
+			free_error(a);
+		ft_append_node(a, (int)nbr);
+		i++;
+	}
 }

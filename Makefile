@@ -2,7 +2,7 @@ CC = cc
 INCLUDES = include/
 CFLAGS = -I$(INCLUDES) -Wall -Wextra -Werror -g
 NAME = push_swap
-SRC = stack_init.c push_swap.c ft_atol.c ft_clean_arg.c
+SRC = ft_new_stack.c ft_new_stack_utils.c main.c ft_atol.c check_free.c 
 
 OBJDIR = obj_push_swap
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
